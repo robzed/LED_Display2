@@ -496,6 +496,42 @@ void slow_tickup()
 
 }
 
+
+void pixel_walk()
+{
+  uint8_t r, g, b;
+  
+  switch(display_mode)
+  {
+    case 0:
+      r = max_brightness; g = max_brightness; b = max_brightness;
+      break;
+    case 1:
+      r = max_brightness; g = 0; b = 0;
+      break;
+    case 2:
+      r = 0; g = max_brightness; b = 0;
+      break;
+    case 3:
+    default:
+      r = 0; g = 0; b = max_brightness;
+      break;    
+  }
+  pixels.setPixelColor(display_col, pixels.Color(r, g, b));
+  pixels.show();
+  pixels.setPixelColor(display_col, pixels.Color(0, 0, 0));
+
+  display_timer.set(30);
+  
+  display_col += 1;
+  if(display_col >= NUM_LEDS) { 
+    display_col = 0;
+    display_mode ++; 
+    if(display_mode == 4) { display_mode = 0; }
+  }
+}
+
+
 const display_list_t* which_list = halloween_list;  // xmas_list
 const display_list_t* pointer = 0;
 //const display_list
@@ -535,7 +571,7 @@ void slideshow()
 }
 
 // could use Virtual functions instead of function pointer
-void (*display_pointer) ()  = slideshow; // slow_tickup; // row_swipe;
+void (*display_pointer) ()  = pixel_walk; // slideshow; // slow_tickup; // row_swipe;
 
 void show_display()
 {
@@ -573,81 +609,7 @@ void do_LED()
   LED_mode ++;
 }
 
-
 void loop() {
   show_display();
   do_LED();
 }
-
-
-#if 0
-void loop() {
-    for(int dot = 0; dot < NUM_LEDS; dot++) { 
-        leds[dot] = CRGB::White;
-        FastLED.show();
-        // clear this led for the next time around the loop
-        leds[dot] = CRGB::Black;
-        delay(30);
-    }
-    for(int dot = 0; dot < NUM_LEDS; dot++) { 
-        leds[dot] = CRGB::Red;
-        FastLED.show();
-        // clear this led for the next time around the loop
-        leds[dot] = CRGB::Black;
-        delay(30);
-    }
-    for(int dot = 0; dot < NUM_LEDS; dot++) { 
-        leds[dot] = CRGB::Green;
-        FastLED.show();
-        // clear this led for the next time around the loop
-        leds[dot] = CRGB::Black;
-        delay(30);
-    }
-    for(int dot = 0; dot < NUM_LEDS; dot++) { 
-        leds[dot] = CRGB::Blue;
-        FastLED.show();
-        // clear this led for the next time around the loop
-        leds[dot] = CRGB::Black;
-        delay(30);
-    }
-}
-#endif
-
-#if 0
-void loop() {
-
-   for(int col = 0; col < NUM_COLUMNS; col++) { 
-      for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
-        leds[col+row] = CRGB::Blue;
-      }
-      FastLED.show();
-      // clear this led for the next time around the loop
-      for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
-        leds[col+row] = CRGB::Black;
-      }
-      delay(30);
-  }
-   for(int col = 0; col < NUM_COLUMNS; col++) { 
-      for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
-        leds[col+row] = CRGB::Red;
-      }
-      FastLED.show();
-      // clear this led for the next time around the loop
-      for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
-        leds[col+row] = CRGB::Black;
-      }
-      delay(30);
-  }
-   for(int col = 0; col < NUM_COLUMNS; col++) { 
-      for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
-        leds[col+row] = CRGB::Green;
-      }
-      FastLED.show();
-      // clear this led for the next time around the loop
-      for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
-        leds[col+row] = CRGB::Black;
-      }
-      delay(30);
-  }
-}
-#endif
