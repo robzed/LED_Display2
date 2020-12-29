@@ -532,7 +532,7 @@ void pixel_walk()
 }
 
 
-const display_list_t* which_list = halloween_list;  // xmas_list
+const display_list_t* which_list = xmas_list; //halloween_list;
 const display_list_t* pointer = 0;
 //const display_list
 
@@ -551,7 +551,7 @@ void slideshow()
   //for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS)
   {
     uint32_t line = *image++;
-    for(int col=1, col_mask=0x800000; col < 24; col_mask >>= 1, col++)
+    for(int col=0, col_mask=0x800000; col < NUM_COLUMNS; col_mask >>= 1, col++)
     {
       if(line & col_mask) {
           pixels.setPixelColor(col+row, pixels.Color(70, 70, 100));
@@ -571,7 +571,7 @@ void slideshow()
 }
 
 // could use Virtual functions instead of function pointer
-void (*display_pointer) ()  = pixel_walk; // slideshow; // slow_tickup; // row_swipe;
+void (*display_pointer) ()  = slideshow; // pixel_walk; // slideshow; // slow_tickup; // row_swipe;
 
 void show_display()
 {
