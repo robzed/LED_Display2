@@ -1,4 +1,6 @@
 #include <Adafruit_NeoPixel.h>
+#include <ArduinoBLE.h>
+
 #define NUM_ROWS 24
 #define NUM_COLUMNS 24
 #define NUM_LEDS (NUM_ROWS*NUM_COLUMNS)
@@ -23,11 +25,60 @@ private:
   unsigned long duration;
 };
 
+BLEService displayService("ec5e7473-c520-42b5-8dcd-b04f59ce996d");
+BLEUnsignedCharCharacteristic display_mode_characteristic("cdf00644-b962-4ca1-8f8f-c40fe4f21c89", BLEWrite);
+BLEDescriptor modeDescriptor("2901", "Display mode");
+ 
+
+void set_display_mode(byte mode);
+
+void onModeCharValueUpdate(BLEDevice central, BLECharacteristic characteristic) 
+{
+  Serial.println("Write mode:");
+  byte value = 0;
+  characteristic.readValue(value);
+  Serial.println(value);
+
+  set_display_mode(value);
+}
+
+unsigned long connTime = 0;
+
+void blePeripheralConnectHandler(BLEDevice central) {
+    Serial.println("Connected event, central: ");
+    Serial.println(central.address());
+    connTime = millis();
+}
+
+void blePeripheralDisconnectHandler(BLEDevice central) {
+    Serial.println("Disconnected event, central: ");
+    Serial.println(central.address());
+}
+
 void setup() {
   pixels.begin();
   Serial.begin(115200);
-  Serial.println(F("\nLED+2\n"));
+  Serial.println(F("\nLED Display Board v2\n"));
   pinMode(LED_BUILTIN, OUTPUT);
+  if (!BLE.begin())
+  {
+    Serial.println("Starting BLE failed!\n");
+    while(1) { }
+  }
+  else
+  {
+    //BLE.debug(Serial);
+    BLE.setLocalName("Display board v2");
+    BLE.setDeviceName("Display board v2");
+    BLE.setAdvertisedService(displayService);
+    display_mode_characteristic.addDescriptor(modeDescriptor);
+    displayService.addCharacteristic(display_mode_characteristic);
+    BLE.addService(displayService);
+    BLE.setEventHandler(BLEConnected, blePeripheralConnectHandler);
+    BLE.setEventHandler(BLEDisconnected, blePeripheralDisconnectHandler);
+    display_mode_characteristic.setEventHandler(BLEWritten, onModeCharValueUpdate);
+    BLE.advertise();
+  }
 }
 
 Timer display_timer;  // start off expired
@@ -469,7 +520,7 @@ void row_swipe()
   for(int row = 0; row < NUM_LEDS; row += NUM_COLUMNS) { 
     pixels.setPixelColor(display_col+row, pixels.Color(0, 0, 0));
   }
-  display_timer.set(30);
+  display_timer.set(200);
   
   display_col += 1;
   if(display_col >= NUM_COLUMNS) { 
@@ -534,7 +585,6 @@ void pixel_walk()
 
 const display_list_t* which_list = xmas_list; //halloween_list;
 const display_list_t* pointer = 0;
-//const display_list
 
 void slideshow()
 {
@@ -571,13 +621,60 @@ void slideshow()
 }
 
 // could use Virtual functions instead of function pointer
-void (*display_pointer) ()  = slideshow; // pixel_walk; // slideshow; // slow_tickup; // row_swipe;
+void (*display_pointer) ()  = slideshow;
 
 void show_display()
 {
   if(not display_timer.finished()) return;
   display_pointer();
 }
+
+void set_display_mode(byte mode)
+{
+  switch(mode)
+  {
+    case 1:
+    case '1':
+    case 'X':
+    case 'x':
+      display_pointer = slideshow;
+      which_list = xmas_list;
+      pointer = 0;
+      break;
+    case 2:
+    case '2':
+    case 'H':
+    case 'h':
+      display_pointer = slideshow;
+      which_list = halloween_list;
+      pointer = 0;
+      break;
+    case 3:
+    case '3':
+    case 'R':
+    case 'r':
+      display_pointer = row_swipe;
+      break;
+    case 4:
+    case '4':
+    case 'P':
+    case 'p':
+      display_pointer = pixel_walk;
+      break;
+    case 5:
+    case '5':
+    case 'T':
+    case 't':
+      display_pointer = slow_tickup;
+      break;
+    default:
+      display_pointer = slideshow;
+      which_list = halloween_list;
+      pointer = 0;
+      break;
+  }
+}
+
 
 int LED_mode = 0;
 Timer LED_timer;
@@ -612,4 +709,13 @@ void do_LED()
 void loop() {
   show_display();
   do_LED();
+
+  BLE.poll();
+
+  if (BLE.connected()) {
+      if (millis() > connTime + 100000) {
+          Serial.println("time to disconnect");
+          BLE.disconnect();
+      }
+  }
 }
