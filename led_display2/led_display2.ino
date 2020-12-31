@@ -202,17 +202,26 @@ void TextImages::display()
         case 'W':
           pixels.setPixelColor(col+row, pixels.Color(max_brightness, max_brightness, max_brightness));
           break;
+        case 'w':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness/4, max_brightness/2, max_brightness/4));
+          break;
         case 'R':
           pixels.setPixelColor(col+row, pixels.Color(max_brightness, 0, 0));
+          break;
+        case 'r':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness/4, 0, 0));
           break;
         case 'G':
           pixels.setPixelColor(col+row, pixels.Color(0, max_brightness, 0));
           break;
         case 'g':
-          pixels.setPixelColor(col+row, pixels.Color(0, max_brightness/2, 0));
+          pixels.setPixelColor(col+row, pixels.Color(0, max_brightness/4, 0));
           break;
         case 'B':
           pixels.setPixelColor(col+row, pixels.Color(0, 0, max_brightness));
+          break;
+        case 'b':
+          pixels.setPixelColor(col+row, pixels.Color(0, 0, max_brightness/4));
           break;
         case 'C':
           pixels.setPixelColor(col+row, pixels.Color(0, max_brightness, max_brightness));
@@ -220,8 +229,11 @@ void TextImages::display()
         case 'Y':
           pixels.setPixelColor(col+row, pixels.Color(max_brightness, max_brightness, 0));
           break;
+        case 'y':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness/4, max_brightness/4, 0));
+          break;
         default:
-          pixels.setPixelColor(col+row, pixels.Color(max_brightness/2, 0, 0));
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness/4, 0, 0));
           break;
       }
     }
@@ -358,20 +370,20 @@ const char PROGMEM *Holly_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 "                        ",
-"   WWWW           WWWW  ",
-"   WWWW           WWWW  ",
-"   WWWWWWW     WWWWWWW  ",
-"   WWWWWWW     WWWWWWW  ",
-"     WWWWW     WWWWW    ",
-"     WWWWWWW WWWWWWW    ",
-"     WWWWWWW WWWWWWW    ",
-"        WWWW WWWW       ",
-"          WW WWWW       ",
-"        WW              ",
-"       WW W WW          ",
-"       WWWWWW W         ",
-"        WW WWWW         ",
-"            WW          ",
+"   GGGG           GGGG  ",
+"   GgGG           GGgG  ",
+"   GGgGGGG     GGGggGG  ",
+"   GGGggGG     GGGgGGG  ",
+"     GGgGG     GGgGG    ",
+"     GGggGGG GGGggGG    ",
+"     GGGgggG GGggGGG    ",
+"        GGgG GgGG       ",
+"          Gg gGGG       ",
+"        RR              ",
+"       RR r RR          ",
+"       RRrrRR r         ",
+"        rr RRrr         ",
+"            rr          ",
 "                        ",
 "                        ",
 };
