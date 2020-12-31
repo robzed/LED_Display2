@@ -303,7 +303,8 @@ const char PROGMEM *xmas_tree_inv_1_string_array[] PROGMEM = {
 "         WWWWWWW        ",
 "          WWWWW         ",
 };
-// TextImages xmas_tree_inv_1(xmas_tree_inv_1_string_array, sizeof(xmas_tree_inv_1_string_array)/sizeof(char*));
+TextImages xmas_tree_inv_1(xmas_tree_inv_1_string_array, sizeof(xmas_tree_inv_1_string_array)/sizeof(char*));
+
 const char PROGMEM *xmas_tree_inv_2_string_array[] PROGMEM = {
 "                        ",
 "           W W          ",
@@ -326,7 +327,8 @@ const char PROGMEM *xmas_tree_inv_2_string_array[] PROGMEM = {
 "         WWWWWWW        ",
 "          WWWWW         ",
 };
-// TextImages xmas_tree_inv_2(xmas_tree_inv_2_string_array, sizeof(xmas_tree_inv_2_string_array)/sizeof(char*));
+TextImages xmas_tree_inv_2(xmas_tree_inv_2_string_array, sizeof(xmas_tree_inv_2_string_array)/sizeof(char*));
+
 const char PROGMEM *xmas_tree_inv_4_string_array[] PROGMEM = {
 "            W           ",
 "           W W          ",
@@ -349,7 +351,8 @@ const char PROGMEM *xmas_tree_inv_4_string_array[] PROGMEM = {
 "         WWWWWWW        ",
 "          WWWWW         ",
 };
-// TextImages xmas_tree_inv_4(xmas_tree_inv_4_string_array, sizeof(xmas_tree_inv_4_string_array)/sizeof(char*));
+TextImages xmas_tree_inv_4(xmas_tree_inv_4_string_array, sizeof(xmas_tree_inv_4_string_array)/sizeof(char*));
+
 const char PROGMEM *Holly_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -372,7 +375,8 @@ const char PROGMEM *Holly_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages Holly(Holly_string_array, sizeof(Holly_string_array)/sizeof(char*));
+TextImages Holly(Holly_string_array, sizeof(Holly_string_array)/sizeof(char*));
+
 const char PROGMEM *House_and_trees_string_array[] PROGMEM = {
 "                      W ",
 "            W        WWW",
@@ -395,7 +399,8 @@ const char PROGMEM *House_and_trees_string_array[] PROGMEM = {
 "WW W      W W W    WWWWW",
 "WW W      WWWWW      W W",
 };
-// TextImages House_and_trees(House_and_trees_string_array, sizeof(House_and_trees_string_array)/sizeof(char*));
+TextImages House_and_trees(House_and_trees_string_array, sizeof(House_and_trees_string_array)/sizeof(char*));
+
 const char PROGMEM *Santa_in_his_sleigh_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -418,7 +423,8 @@ const char PROGMEM *Santa_in_his_sleigh_string_array[] PROGMEM = {
 "   WWWWWWWWWWWWWWWWWW   ",
 "                        ",
 };
-// TextImages Santa_in_his_sleigh(Santa_in_his_sleigh_string_array, sizeof(Santa_in_his_sleigh_string_array)/sizeof(char*));
+TextImages Santa_in_his_sleigh(Santa_in_his_sleigh_string_array, sizeof(Santa_in_his_sleigh_string_array)/sizeof(char*));
+
 const char PROGMEM *Star_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -441,7 +447,8 @@ const char PROGMEM *Star_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages Star(Star_string_array, sizeof(Star_string_array)/sizeof(char*));
+TextImages Star(Star_string_array, sizeof(Star_string_array)/sizeof(char*));
+
 const char PROGMEM *ho_ho_santa_string_array[] PROGMEM = {
 "                        ",
 " W W          WWWWW     ",
@@ -464,7 +471,8 @@ const char PROGMEM *ho_ho_santa_string_array[] PROGMEM = {
 "              WWWWWW    ",
 "                        ",
 };
-// TextImages ho_ho_santa(ho_ho_santa_string_array, sizeof(ho_ho_santa_string_array)/sizeof(char*));
+TextImages ho_ho_santa(ho_ho_santa_string_array, sizeof(ho_ho_santa_string_array)/sizeof(char*));
+
 const char PROGMEM *present_string_array[] PROGMEM = {
 "                        ",
 "       W        W       ",
@@ -487,7 +495,8 @@ const char PROGMEM *present_string_array[] PROGMEM = {
 "     WWWWWWWWWWWWWW     ",
 "                        ",
 };
-// TextImages present(present_string_array, sizeof(present_string_array)/sizeof(char*));
+TextImages present(present_string_array, sizeof(present_string_array)/sizeof(char*));
+
 const char PROGMEM *happy_new_year_string_array[] PROGMEM = {
 "W   W  WW  WWW WWW W   W",
 "W   W W  W W W W W  W W ",
@@ -510,7 +519,8 @@ const char PROGMEM *happy_new_year_string_array[] PROGMEM = {
 "    W   WWWW W  W W  W  ",
 "                        ",
 };
-// TextImages happy_new_year(happy_new_year_string_array, sizeof(happy_new_year_string_array)/sizeof(char*));
+TextImages happy_new_year(happy_new_year_string_array, sizeof(happy_new_year_string_array)/sizeof(char*));
+
 const char PROGMEM *angel_string_array[] PROGMEM = {
 "          WWWW          ",
 "         W    W         ",
@@ -533,7 +543,8 @@ const char PROGMEM *angel_string_array[] PROGMEM = {
 "  W       W  W       W  ",
 "         WW  WW         ",
 };
-// TextImages angel(angel_string_array, sizeof(angel_string_array)/sizeof(char*));
+TextImages angel(angel_string_array, sizeof(angel_string_array)/sizeof(char*));
+
 const char PROGMEM *gingerbread_man3_string_array[] PROGMEM = {
 "         WWWWWW         ",
 "        W      W        ",
@@ -556,7 +567,8 @@ const char PROGMEM *gingerbread_man3_string_array[] PROGMEM = {
 "   W  WW        WW  W   ",
 "    WW            WW    ",
 };
-// TextImages gingerbread_man3(gingerbread_man3_string_array, sizeof(gingerbread_man3_string_array)/sizeof(char*));
+TextImages gingerbread_man3(gingerbread_man3_string_array, sizeof(gingerbread_man3_string_array)/sizeof(char*));
+
 const char PROGMEM *rudolph_string_array[] PROGMEM = {
 "      W W               ",
 "    WWWWWW              ",
@@ -579,7 +591,8 @@ const char PROGMEM *rudolph_string_array[] PROGMEM = {
 "   W W      W   W       ",
 "  W  W      W   W       ",
 };
-// TextImages rudolph(rudolph_string_array, sizeof(rudolph_string_array)/sizeof(char*));
+TextImages rudolph(rudolph_string_array, sizeof(rudolph_string_array)/sizeof(char*));
+
 const char PROGMEM *rudolph2_string_array[] PROGMEM = {
 "   W    W               ",
 "  WW   W                ",
@@ -602,7 +615,8 @@ const char PROGMEM *rudolph2_string_array[] PROGMEM = {
 " W   W  W         W  WW ",
 "      WW           WWW  ",
 };
-// TextImages rudolph2(rudolph2_string_array, sizeof(rudolph2_string_array)/sizeof(char*));
+TextImages rudolph2(rudolph2_string_array, sizeof(rudolph2_string_array)/sizeof(char*));
+
 const char PROGMEM *ho_ho_santa_closed_mouth_string_array[] PROGMEM = {
 "                        ",
 " W W          WWWWW     ",
@@ -625,7 +639,8 @@ const char PROGMEM *ho_ho_santa_closed_mouth_string_array[] PROGMEM = {
 "              WWWWWW    ",
 "                        ",
 };
-// TextImages ho_ho_santa_closed_mouth(ho_ho_santa_closed_mouth_string_array, sizeof(ho_ho_santa_closed_mouth_string_array)/sizeof(char*));
+TextImages ho_ho_santa_closed_mouth(ho_ho_santa_closed_mouth_string_array, sizeof(ho_ho_santa_closed_mouth_string_array)/sizeof(char*));
+
 const char PROGMEM *snowman2_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -648,7 +663,7 @@ const char PROGMEM *snowman2_string_array[] PROGMEM = {
 "        WW    WW        ",
 "          WWWW          ",
 };
-// TextImages snowman2(snowman2_string_array, sizeof(snowman2_string_array)/sizeof(char*));
+TextImages snowman2(snowman2_string_array, sizeof(snowman2_string_array)/sizeof(char*));
 
 // converted from Bauble.txt
 /*
@@ -670,7 +685,7 @@ const PROGMEM uint32_t xmas_tree_inv_0_array[] = {
 5120 , 5120 , 32512 , 15872 ,
 };
 Binary20Line xmas_tree_inv_0(xmas_tree_inv_0_array);
-*/
+
 // converted from xmas tree inv 1.r
 const PROGMEM uint32_t xmas_tree_inv_1_array[] = {
 2048 , 5120 , 8704 , 5120 ,
@@ -830,7 +845,7 @@ const PROGMEM uint32_t snowman2_array[] = {
 137280 , 65664 , 49920 , 15360 ,
 };
 Binary20Line snowman2(snowman2_array);
-
+*/
 
 struct display_list_t {
   ImageBase& image;
@@ -902,7 +917,8 @@ const char PROGMEM *emily_ghost_string_array[] PROGMEM = {
 "     WWW  WWWW  WW  WW W",
 "     WW    WW   WW   W  ",
 };
-// TextImages emily_ghost(emily_ghost_string_array, sizeof(emily_ghost_string_array)/sizeof(char*));
+TextImages emily_ghost(emily_ghost_string_array, sizeof(emily_ghost_string_array)/sizeof(char*));
+
 const char PROGMEM *emily_pumpkin_string_array[] PROGMEM = {
 "         WWW            ",
 "         W W  WWWWWWW   ",
@@ -925,7 +941,8 @@ const char PROGMEM *emily_pumpkin_string_array[] PROGMEM = {
 "     W         WW       ",
 "      WWWWWWWWW         ",
 };
-// TextImages emily_pumpkin(emily_pumpkin_string_array, sizeof(emily_pumpkin_string_array)/sizeof(char*));
+TextImages emily_pumpkin(emily_pumpkin_string_array, sizeof(emily_pumpkin_string_array)/sizeof(char*));
+
 const char PROGMEM *emily_spider_string_array[] PROGMEM = {
 "                        ",
 "                      WW",
@@ -948,7 +965,8 @@ const char PROGMEM *emily_spider_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages emily_spider(emily_spider_string_array, sizeof(emily_spider_string_array)/sizeof(char*));
+TextImages emily_spider(emily_spider_string_array, sizeof(emily_spider_string_array)/sizeof(char*));
+
 const char PROGMEM *skull_string_array[] PROGMEM = {
 "      WWWWWWWWWWWWW     ",
 "     WWWWWWWWWWWWWWW    ",
@@ -971,7 +989,8 @@ const char PROGMEM *skull_string_array[] PROGMEM = {
 "       WWWWWWWWWWW      ",
 "        WWWWWWWWW       ",
 };
-// TextImages skull(skull_string_array, sizeof(skull_string_array)/sizeof(char*));
+TextImages skull(skull_string_array, sizeof(skull_string_array)/sizeof(char*));
+
 const char PROGMEM *pumpkin_eyes_1a_string_array[] PROGMEM = {
 "  WW                  WW",
 "  WWW                WWW",
@@ -994,7 +1013,8 @@ const char PROGMEM *pumpkin_eyes_1a_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages pumpkin_eyes_1a(pumpkin_eyes_1a_string_array, sizeof(pumpkin_eyes_1a_string_array)/sizeof(char*));
+TextImages pumpkin_eyes_1a(pumpkin_eyes_1a_string_array, sizeof(pumpkin_eyes_1a_string_array)/sizeof(char*));
+
 const char PROGMEM *pumpkin_eyes_1b_string_array[] PROGMEM = {
 "  WW                  WW",
 "  WWW                WWW",
@@ -1017,7 +1037,8 @@ const char PROGMEM *pumpkin_eyes_1b_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages pumpkin_eyes_1b(pumpkin_eyes_1b_string_array, sizeof(pumpkin_eyes_1b_string_array)/sizeof(char*));
+TextImages pumpkin_eyes_1b(pumpkin_eyes_1b_string_array, sizeof(pumpkin_eyes_1b_string_array)/sizeof(char*));
+
 const char PROGMEM *pumpkin_eyes_1c_string_array[] PROGMEM = {
 "  WW                  WW",
 "  WWW                WWW",
@@ -1040,7 +1061,8 @@ const char PROGMEM *pumpkin_eyes_1c_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages pumpkin_eyes_1c(pumpkin_eyes_1c_string_array, sizeof(pumpkin_eyes_1c_string_array)/sizeof(char*));
+TextImages pumpkin_eyes_1c(pumpkin_eyes_1c_string_array, sizeof(pumpkin_eyes_1c_string_array)/sizeof(char*));
+
 const char PROGMEM *pumpkin_eyes_1d_string_array[] PROGMEM = {
 "  WW                  WW",
 "  WWW                WWW",
@@ -1063,7 +1085,8 @@ const char PROGMEM *pumpkin_eyes_1d_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages pumpkin_eyes_1d(pumpkin_eyes_1d_string_array, sizeof(pumpkin_eyes_1d_string_array)/sizeof(char*));
+TextImages pumpkin_eyes_1d(pumpkin_eyes_1d_string_array, sizeof(pumpkin_eyes_1d_string_array)/sizeof(char*));
+
 const char PROGMEM *face1_string_array[] PROGMEM = {
 "          WWWWWW        ",
 "         WWWWWWWW       ",
@@ -1086,7 +1109,8 @@ const char PROGMEM *face1_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages face1(face1_string_array, sizeof(face1_string_array)/sizeof(char*));
+TextImages face1(face1_string_array, sizeof(face1_string_array)/sizeof(char*));
+
 const char PROGMEM *face2_string_array[] PROGMEM = {
 "          WWWWWW        ",
 "         WWWWWWWW       ",
@@ -1109,7 +1133,8 @@ const char PROGMEM *face2_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages face2(face2_string_array, sizeof(face2_string_array)/sizeof(char*));
+TextImages face2(face2_string_array, sizeof(face2_string_array)/sizeof(char*));
+
 const char PROGMEM *face3_string_array[] PROGMEM = {
 "          WWWWWW        ",
 "         WWWWWWWW       ",
@@ -1132,7 +1157,8 @@ const char PROGMEM *face3_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages face3(face3_string_array, sizeof(face3_string_array)/sizeof(char*));
+TextImages face3(face3_string_array, sizeof(face3_string_array)/sizeof(char*));
+
 const char PROGMEM *face4_string_array[] PROGMEM = {
 "          WWWWWW        ",
 "     W   WWWWWWWW   W   ",
@@ -1155,7 +1181,8 @@ const char PROGMEM *face4_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages face4(face4_string_array, sizeof(face4_string_array)/sizeof(char*));
+TextImages face4(face4_string_array, sizeof(face4_string_array)/sizeof(char*));
+
 const char PROGMEM *jsw_demon1_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -1178,7 +1205,8 @@ const char PROGMEM *jsw_demon1_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages jsw_demon1(jsw_demon1_string_array, sizeof(jsw_demon1_string_array)/sizeof(char*));
+TextImages jsw_demon1(jsw_demon1_string_array, sizeof(jsw_demon1_string_array)/sizeof(char*));
+
 const char PROGMEM *jsw_demon2_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -1201,7 +1229,8 @@ const char PROGMEM *jsw_demon2_string_array[] PROGMEM = {
 "                        ",
 "                        ",
 };
-// TextImages jsw_demon2(jsw_demon2_string_array, sizeof(jsw_demon2_string_array)/sizeof(char*));
+TextImages jsw_demon2(jsw_demon2_string_array, sizeof(jsw_demon2_string_array)/sizeof(char*));
+
 const char PROGMEM *jsw_demon3_string_array[] PROGMEM = {
 "                        ",
 "                        ",
@@ -1224,9 +1253,9 @@ const char PROGMEM *jsw_demon3_string_array[] PROGMEM = {
 "                W       ",
 "                 W      ",
 };
-// TextImages jsw_demon3(jsw_demon3_string_array, sizeof(jsw_demon3_string_array)/sizeof(char*));
+TextImages jsw_demon3(jsw_demon3_string_array, sizeof(jsw_demon3_string_array)/sizeof(char*));
 
-
+/*
 // converted from emily_ghost.g
 const PROGMEM uint32_t emily_ghost_array[] = {
 32704 , 65504 , 65504 , 131056 ,
@@ -1376,7 +1405,7 @@ const PROGMEM uint32_t jsw_demon3_array[] = {
 650 , 256 , 128 , 64 ,
 };
 Binary20Line jsw_demon3(jsw_demon3_array);
-
+*/
 
 const PROGMEM display_list_t halloween_list[] = {
     { emily_ghost , 20 },
