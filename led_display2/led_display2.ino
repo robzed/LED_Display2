@@ -1,3 +1,10 @@
+// LED display2
+// 
+// Copyright (c) 2020 Rob Probin
+// For terms see License. Released under MIT license.
+//
+// @todo:
+//   1. Allow for LED balancing if different chanins are used (I have different WS2812 chains, which respond slightly differently at low levels).
 #include <Adafruit_NeoPixel.h>
 #include <ArduinoBLE.h>
 
@@ -8,9 +15,8 @@
 
 Adafruit_NeoPixel pixels(NUM_LEDS, DATA_PIN, NEO_GRB + NEO_KHZ800);
 
-unsigned char max_brightness = 150;
-//unsigned int make_red
-
+const uint8_t max_brightness = 255;
+uint8_t current_brightness = 128;   // 255 = max, 0 = off.
 
 // could make this more efficient if it used a list of things to run next
 class Timer {
@@ -55,7 +61,8 @@ void onBrightnessCharValueUpdate(BLEDevice central, BLECharacteristic characteri
   // value constraint (randowly set ... avoid large full display currents).
   if(value > 160) { value = 160; }
   
-  max_brightness = value;
+  current_brightness = value;
+  pixels.setBrightness(value);
 }
 
 unsigned long connTime = 0;
@@ -73,6 +80,7 @@ void blePeripheralDisconnectHandler(BLEDevice central) {
 
 void setup() {
   pixels.begin();
+  pixels.setBrightness(current_brightness);
   Serial.begin(115200);
   Serial.println(F("\n\rLED Display Board v2\n\r"));
   pinMode(LED_BUILTIN, OUTPUT);
@@ -93,7 +101,7 @@ void setup() {
     display_mode_characteristic.setEventHandler(BLEWritten, onModeCharValueUpdate);
     
     brightness_characteristic.addDescriptor(brightnessDescriptor);
-    brightness_characteristic.writeValue(max_brightness); 
+    brightness_characteristic.writeValue(current_brightness); 
     displayService.addCharacteristic(brightness_characteristic);    
     brightness_characteristic.setEventHandler(BLEWritten, onBrightnessCharValueUpdate);
     
@@ -187,6 +195,18 @@ void TextImages::display()
           break;
         case 'C':
           pixels.setPixelColor(col+row, pixels.Color(0, max_brightness, max_brightness));
+          break;
+        case 'O':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness, max_brightness/4, 0));
+          break;
+        case 'P':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness*0.63, max_brightness*0.13, max_brightness*0.94));
+          break;
+        case 'M':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness, 0, max_brightness));
+          break;
+        case 'm':
+          pixels.setPixelColor(col+row, pixels.Color(max_brightness/4, 0, max_brightness/4));
           break;
         case 'Y':
           pixels.setPixelColor(col+row, pixels.Color(max_brightness, max_brightness, 0));
@@ -529,11 +549,11 @@ const char PROGMEM *gingerbread_man3_string_array[] PROGMEM = {
 "        WOBBBBOW       ",
 "    WWWWOOOOOOOOWWWW    ",
 "   WOOOOOOOOOOOOOOOOW   ",
-"   WOOOOOOOGGOOOOOOOW   ",
-"    WWOOOOOGGOOOOWW    ",
+"   WOOOOOOOPPOOOOOOOW   ",
+"    WWOOOOOPPOOOOWW    ",
 "       WOOOOOOOOW       ",
-"       WOOOBBOOOW       ",
-"       WOOOBBOOOW       ",
+"       WOOOPPOOOW       ",
+"       WOOOPPOOOW       ",
 "      WOOOOOOOOOOW      ",
 "     WOOOOOOOOOOOOW     ",
 "    WOOOOOWWWWOOOOOW    ",
@@ -1130,7 +1150,7 @@ void row_swipe()
 
 void slow_tickup()
 {
-    pixels.setPixelColor(display_col, pixels.Color(20, 20, 20));
+    pixels.setPixelColor(display_col, pixels.Color(max_brightness, max_brightness, max_brightness));
     pixels.show();
     display_timer.set(50);
 
