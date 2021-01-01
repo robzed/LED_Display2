@@ -8,7 +8,7 @@ A new LED display based on the WS2812B addressable LED ('Neopixels').
 ## Wiring
 
 ![Wiring](images/Wiring.png)
-![Nano33BLE][images/Nano33BLE.png]
+![Nano33BLE](images/Nano33BLE.png)
 
 
 
