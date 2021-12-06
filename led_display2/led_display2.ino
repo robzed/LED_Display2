@@ -372,45 +372,45 @@ const char PROGMEM *Holly_string_array[] PROGMEM = {
 TextImages Holly(Holly_string_array, sizeof(Holly_string_array)/sizeof(char*));
 
 const char PROGMEM *House_and_trees_string_array[] PROGMEM = {
-"                      W ",
-"            W        WWW",
-"           W W     WWW  ",
-"          W   W   WWW W ",
+"                      b ",
+"            W        bbb",
+"           W W     bbb  ",
+"          W   W   bbb b ",
 "         W     W        ",
-"W       W       W WW    ",
-"WW     W   W W   WWW   W",
-"WWW   W           WW   W",
-"WW   W     W W     W  WW",
-"WWW W               W WW",
-"WWWWW               WWWW",
-"WWW   W W WWWWW W W  WWW",
-"WWWW      W W W       WW",
-"WWWWW W W W W W W W  WWW",
-"WWW       W W W     WWWW",
-"WWWW      W W W       WW",
-"WWWWW     WWWWW      WWW",
-"WWWWWW    W W W     WWWW",
-"WW W      W W W    WWWWW",
-"WW W      WWWWW      W W",
+"g       W       W RR    ",
+"gg     W   Y Y   WRR   g",
+"ggg   W           WR  gg",
+"gg   W     Y Y     W  gg",
+"ggg W               W gg",
+"gggg               WWWgg",
+"ggg   Y Y WWWWW Y Y  ggg",
+"gggg      W W W       gg",
+"ggggg Y Y W W W Y Y  ggg",
+"ggg       W W W     gggg",
+"gggg      W W W       gg",
+"ggggg     WWWWW      ggg",
+"gggggg    W W W     gggg",
+"bb W      W W W    ggggg",
+"bb W      WWWWW      W b",
 };
 TextImages House_and_trees(House_and_trees_string_array, sizeof(House_and_trees_string_array)/sizeof(char*));
 
 const char PROGMEM *Santa_in_his_sleigh_string_array[] PROGMEM = {
 "                        ",
 "                        ",
-"  W   W  W              ",
-"   W W    WW            ",
-"   WWW   WWWW           ",
-"  WWWWW  WWWW           ",
-" WWWWWWW  WW            ",
-" WWWWWWW WWWW           ",
-" W   WWW WWWWW  W       ",
-" W    WW WWWWWWW W      ",
-" W     WWWWWWWW  W      ",
-" W               W WW   ",
-" W               W   W  ",
-"  W             W     W ",
-"   W            W     W ",
+"  R   R  W              ",
+"   R R    RR            ",
+"   GGG   WWWW           ",
+"  BGGG   WWWW           ",
+" WBGGGO   WW            ",
+" WWWWOOO RRRR           ",
+" WR  WOO RRRRRW W       ",
+" WR   WW RRRRRRW W      ",
+" WR    WWWWWWWW  W      ",
+" W R             W WW   ",
+" W R             W   W  ",
+"  W R            W    W ",
+"   W R           W    W ",
 "    WWWWWWWWWWWW      W ",
 "     W   W    W       W ",
 "     W   W    W      W  ",
@@ -667,6 +667,8 @@ struct display_list_t {
 };
 
 const PROGMEM display_list_t xmas_list[] = {
+
+  
     { xmas_tree_inv_0, 5 },
     { xmas_tree_inv_1, 5 },
     { xmas_tree_inv_2, 5 },
@@ -681,10 +683,14 @@ const PROGMEM display_list_t xmas_list[] = {
     
     { all_off_image, 10 },
     { bauble, 20 },
+    
+    { Holly_white, 20 }, 
     { Holly, 20 },
+    
     { House_and_trees, 20 },
     { Santa_in_his_sleigh, 20 },
     { Star, 20 },
+    
     { ho_ho_santa, 5 },
     { ho_ho_santa_closed_mouth, 5 },
     { ho_ho_santa, 5 },
@@ -1166,6 +1172,11 @@ void slow_tickup()
 }
 
 
+void pause_display()
+{
+  // literally do nothing
+}
+
 void pixel_walk()
 {
   uint8_t r, g, b;
@@ -1267,6 +1278,9 @@ void set_display_mode(byte mode)
     case 'T':
     case 't':
       display_pointer = slow_tickup;
+      break;
+    case '.':
+      display_pointer = pause_display;
       break;
     default:
       display_pointer = slideshow;
